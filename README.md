@@ -4,7 +4,7 @@
 ## CAT
 
 Current data:
-* [General Transit Feed Specification](https://github.com/Smart-Cville/CID-2018-Regional-Transit-Challenge/blob/master/data/2017_08_CharlottesvilleAreaTransit.zip) is in `data/`
+* [General Transit Feed Specification](https://github.com/Smart-Cville/CID-2018-Regional-Transit-Challenge/blob/master/data/CAT_2017_08_GTFS.zip) is in `data/`
 * [Last month's ridership](http://opendata.charlottesville.org/datasets/transit) is on the Open Data Portal. Its 1.7 million lines...
 
 Current applications:
@@ -23,6 +23,9 @@ Current applications:
 
 ## JAUNT
 
-Stay tuned...
+Current data:
+ * [Paraservice Polygons](https://github.com/Smart-Cville/CID-2018-Regional-Transit-Challenge/blob/master/data/JAUNT_ParaService_Polygons.kmz)
+ 
+ * [Paraserve Rules](https://github.com/Smart-Cville/CID-2018-Regional-Transit-Challenge/blob/master/data/JAUNT_ParaServiceAreaRules.xlsx)
 
 
