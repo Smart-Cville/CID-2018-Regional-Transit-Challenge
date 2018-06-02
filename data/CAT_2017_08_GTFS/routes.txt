@@ -1,0 +1,14 @@
+route_id,route_short_name,route_long_name,route_desc,route_url,route_color,route_text_color,route_type
+15288,1,PVCC & Woolen Mills,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-1-1-30,f47721,ffffff,3
+15289,2,5th Street Station,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-2-effective-10-1,9c4e0f,ffffff,3
+15290,3,Southwood & Belmont,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-3-1-30,2b328a,ffffff,3
+15300,T,W Main St & UVA,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/free-trolley-1-30,086d38,ffffff,3
+15298,11,Locust Ave & Rio Rd,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-11-1-30,68bd45,ffffff,3
+15291,4,Cherry Ave & Harris Rd,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-4-1-30,ed2124,ffffff,3
+15292,5,Commonwealth Dr,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-5-1-30,9c4e0f,ffffff,3
+15293,6,Ridge St & Prospect Ave,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-6-1-30,fbad18,ffffff,3
+15294,7,Emmet St & Seminole Trl,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-7-july-1,752b8f,ffffff,3
+15295,8,Preston Ave & Emmet St,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-8-1-30,909170,ffffff,3
+15296,9,The Health Dept & YMCA,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-9-1-30,ed228e,ffffff,3
+15297,10,Pantops,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-10-1-30,3dc4e5,ffffff,3
+15299,12,Seminole Trl,,https://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat-/schedules-maps/route-12-effective-10-1,752b8f,ffffff,3

@@ -1,0 +1,4 @@
+service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
+35126,1,1,1,1,1,0,0,20170805,20180804
+35127,0,0,0,0,0,1,0,20170805,20180804
+35132,0,0,0,0,0,0,1,20170805,20180804

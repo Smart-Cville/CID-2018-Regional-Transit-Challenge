@@ -1,0 +1,2 @@
+agency_name,agency_url,agency_timezone
+Charlottesville Area Transit,http://www.charlottesville.org/departments-and-services/city-services/charlottesville-area-transit-cat,US/Eastern
