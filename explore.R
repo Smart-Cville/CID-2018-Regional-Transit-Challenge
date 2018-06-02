@@ -20,7 +20,17 @@ library(sf)
 # https://ropensci.github.io/gtfsr/articles/gtfsr-vignette.html
 # visualize gtfs data via leaflet
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 cat <- import_gtfs("data/CAT_2017_08_GTFS.zip", TRUE)
+=======
+# cat <- import_gtfs("data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
+cat <- import_gtfs("~/future/cid/data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
+>>>>>>> Stashed changes
+=======
+# cat <- import_gtfs("data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
+cat <- import_gtfs("~/future/cid/data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
+>>>>>>> Stashed changes
 
 # pre-prend all colors with '#' for leaflet ease
 cat$routes_df$route_color %<>% paste0("#", .)
