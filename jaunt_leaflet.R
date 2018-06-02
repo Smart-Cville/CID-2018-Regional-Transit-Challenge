@@ -12,11 +12,20 @@ library(leaflet)
 library(mapview)
 library(openxlsx)
 
+## CAT sample case ------------------------------------------------------------
+geoCAT <- read.table(file="/Users/samanthatoet/Desktop/CID/CID-2018-Regional-Transit-Challenge/data/CAT_2017_08_GTFS/stops.txt", 
+                     sep=",", header = T)
+
+dfCAT <- data.frame(longitude = geoCAT$stop_lon, 
+                    latitude = geoCAT$stop_lat)
+
+coordinates(dfCAT) <- ~longitude+latitude
+leaflet(dfCAT) %>% addMarkers() %>% addTiles()
+
+
+## Jaunt exploration ----------------------------------------------------------
+
 kml_coords <- getKMLcoordinates("data/doc.kml")
-
-head(kml_coords)
-
-k1 <- kml_coords[[1]]
 
 pg <- map(kml_coords, ~ list(.[,1:2]) %>%  st_polygon) %>% st_sfc(crs = 4326)
 
@@ -41,11 +50,18 @@ jaunt_sf %<>%
 # flipped map in the right order
 mapview(jaunt_sf, zcol = "shape_id")
 
-# add color 
 
-jaunt_sf$color <- rep(ggsci::pal_d3()(10), length.out = nrow(jaunt_sf))
-leaflet() %>%
-    addPolygons(data = jaunt_sf, color = ~color, labels = ~shape_id)
+# play with colors
+
+pal <- colorFactor(c("red", "green", "blue"), 1:34)
+
+factpal <- colorFactor(topo.colors(34), jaunt_sf$shape_id)
+
+leaflet() %>% addTiles() %>%
+    addPolygons(data = jaunt_sf, label = ~shape_id, fillOpacity = 0.5,
+                color = ~factpal(shape_id)) %>%
+    addMarkers(data = dfCAT)
+    
     
 # bring in accessory data
 meta <- read.xlsx("data/JAUNT_ParaServiceAreaRules.xlsx")
