@@ -1,6 +1,6 @@
 #' ---
-#' title: Explore Tools
-#' description: Build methods for importing and plotting the data
+#' title: Explore R's GTFS Tools
+#' description: Fuctions and patterns for importing and plotting the CAT's GTFS data
 #' author: nathancday@gmail.com
 #' ---
 
@@ -10,27 +10,12 @@ library(rgdal)
 library(gtfsr)
 library(sf)
 
-## Jaunt Shape Data ------------------------------------------------
-
-#jpsar <- readOGR("/Users/samanthatoet/Desktop/CID/CID-2018-Regional-Transit-Challenge/data/JAUNT_ParaService_Polygons.kmz")
-
-
 ## GTFSR -----------------------------------------------------------
 
 # https://ropensci.github.io/gtfsr/articles/gtfsr-vignette.html
 # visualize gtfs data via leaflet
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 cat <- import_gtfs("data/CAT_2017_08_GTFS.zip", TRUE)
-=======
-# cat <- import_gtfs("data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
-cat <- import_gtfs("~/future/cid/data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
->>>>>>> Stashed changes
-=======
-# cat <- import_gtfs("data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
-cat <- import_gtfs("~/future/cid/data/2017_08_CharlottesvilleAreaTransit.zip", TRUE)
->>>>>>> Stashed changes
 
 # pre-prend all colors with '#' for leaflet ease
 cat$routes_df$route_color %<>% paste0("#", .)
@@ -48,7 +33,7 @@ library(sf)
 # cat$trips_df has pairings between route_id and shape_id
 cat$trips_df
 
-cat$trips_df %>% with(taviewble(route_id, shape_id))
+cat$trips_df %>% with(table(route_id, shape_id))
 # multiple shape_ids to single route_id, because of direction variable
 
 # not sure what to do with direction yet so keep all
@@ -92,7 +77,7 @@ ggplot(routes) +
 leaflet(routes) %>%
     addProviderTiles("Stamen.TonerHybrid") %>%
     addPolylines(color = ~route_color,
-                 popup = ~htmlEscape(route_short_name) )
+                 label = ~htmlEscape(route_short_name) )
 
 # now do it for stops
 
@@ -136,7 +121,7 @@ stops$route_color <- dc[stops$route_id]
 leaflet(routes) %>%
     addProviderTiles("Stamen.TonerHybrid") %>%
     addPolylines(color = ~route_color,
-                 popup = ~htmlEscape(route_short_name) ) %>%
+                 label = ~htmlEscape(route_short_name) ) %>%
     addCircleMarkers(data = stops,
                      color = "black",
                      radius = 6,
