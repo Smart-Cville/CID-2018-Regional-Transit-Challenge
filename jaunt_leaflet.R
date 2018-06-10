@@ -17,7 +17,7 @@ library(htmltools)
 setwd("~/your/path/git_repo/")
 
 ## CAT sample case ------------------------------------------------------------
-geoCAT <- read.table(file="data/CAT_2017_08_GTFS/stops.txt", 
+geoCAT <- read.table(file="data/CAT_2017_08_GTFS/stops.txt",
                      sep=",", header = T)
 
 # select lon/lat coordinates for building SP object
@@ -37,11 +37,8 @@ leaflet(dfCAT) %>%
 # unzip .kmz file first
 unzip("data/JAUNT_ParaService_Polygons.kmz", exdir = "data/")
 
+# the hard way
 kml_coords <- getKMLcoordinates("data/doc.kml")
-
-k2 <- readOGR("data/doc.kml")
-jaunt_sf <- st_read("data/doc.kml") %>%
-    
 
 kml_coords[[1]] # extra 3rd column?
 
@@ -57,6 +54,14 @@ plot(pg) # base method
 # convert into 'sf'
 jaunt_sf <- st_sf(shape_id = 1:34, geometry = pg)
 class(jaunt_sf)
+
+# the easy way
+jaunt_sf <- st_read("data/doc.kml") %>%
+    select(geometry) %>%
+    mutate(shape_id = 1:26)
+
+
+
 
 ggplot(jaunt_sf) + # geom_sf avaiable in 'ggplot2_2.2.1.9000'
     geom_sf()
@@ -86,16 +91,40 @@ meta %<>%
 
 pal <- colorFactor(c("red", "green", "blue"), 1:34)
 
-factpal <- colorFactor(topo.colors(34), jaunt_sf$shape_id)
+factpal <- colorNumeric("viridis", jaunt_sf$aread)
 
 leaflet() %>%
     addTiles() %>%
-    addPolygons(data = jaunt_sf, label = ~shape_id, fillOpacity = 0.5,
-                color = ~factpal(shape_id)) %>%
-    addMarkers(data = dfCAT)
+    addPolygons(data = jaunt_sf, options = NULL, label = ~shape_id, fillOpacity = 0.5,
+                color = ~factpal(aread)) %>%
+    addCircleMarkers(data = dfCAT, radius = 5, color = "#2b6bb4",
+                     fillColor = "#c8da33", fillOpacity = 0.5)
     
-mapview(dfCAT)
+class(mapview(dfCAT))
 
-mapview(jaunt_sf, zcol = "aread") +
-    mapview(dfCAT, col.region = "green")
+(mapview(jaunt_sf, zcol = "aread") +
+    mapview(dfCAT, col.region = "green"))@map
+
+mapview(jaunt_sf, zcol = "aread")@map %>%
+    addCircleMarkers(data = dfCAT,radius = 5, color = "#2b6bb4",
+                     fillColor = "#c8da33", fillOpacity = 0.5)
+
+### blogpost code -----------------------------------------------------------
+
+# CAT stop coordinates
+cat_sf <- read.table(file="data/CAT_2017_08_GTFS/stops.txt", 
+                     sep=",", header = T) %>%
+    select(stop_name, stop_lon, stop_lat) %>%
+    st_as_sf(coords = c("stop_lon", "stop_lat"))
+
+# JAUNT polygons arrange largest >>> smallest
+jaunt_sf <- st_read("data/doc.kml") %>%
+    select(-Description) %>%
+    mutate(aread = st_area(.) %>% unclass) %>%
+    arrange(desc(aread))
+
+widgetframe::frameWidget( # web overhead
+    (mapview(jaunt_sf, label = jaunt_sf$Name, col.region = "#4a9dff", color = "#ec101f") +
+        mapview(cat_sf, label = cat_sf$stop_name, color = "greenyellow", col.region = "#2b6bb4"))@map
+)
 
