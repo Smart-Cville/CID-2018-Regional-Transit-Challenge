@@ -28,7 +28,12 @@ Current data:
  * [Paraservice Polygons](https://github.com/Smart-Cville/CID-2018-Regional-Transit-Challenge/blob/master/data/JAUNT_ParaService_Polygons.kmz) in `data/`
  
  * [Paraserve Rules](https://github.com/Smart-Cville/CID-2018-Regional-Transit-Challenge/blob/master/data/JAUNT_ParaServiceAreaRules.xlsx) in `data/`
- 
+
+## Post CID Projects:
+#### Integrated Service Platform
+###### Authors: Nate
+Take a look at Nate's [Ride Finder App](https://github.com/nathancday/ride_finder) and join the team to contribute! 
+
 ## CID Solutions:
 
 #### Updating the bus system
